@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🔥 HEADER -->
+<div class="header">
+  <span class="menuBtn" onclick="toggleMenu()">☰</span>
+  🍽 Restaurant
+  <a href="cart.html">🛒</a>
+</div>
+
+<!-- 🔥 DRAWER -->
+<div id="drawer" class="drawer">
+  <h3>🍽 Menu</h3>
+
+  <p onclick="go('index.html')">🏠 Home</p>
+  <p onclick="go('cart.html')">🛒 Cart</p>
+  <p onclick="go('order.html')">📦 My Order</p>
+  <p onclick="go('about.html')">ℹ️ About</p>
+</div>
+
+<!-- 🔥 OVERLAY -->
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<!-- 🔥 MENU -->
+<div id="menu" class="grid"></div>
+
+<script src="app.js"></script>
+<script>
+loadMenu();
+</script>
+
+</body>
+</html>

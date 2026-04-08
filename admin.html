@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- 🔥 HEADER -->
+<div class="header">
+  <span onclick="toggleMenu()">☰</span>
+  👨‍🍳 Admin Panel
+</div>
+
+<!-- 🔥 DRAWER -->
+<div id="drawer" class="drawer">
+  <p onclick="showPage('home')">🏠 Dashboard</p>
+  <p onclick="showPage('menu')">🍽 Menu</p>
+  <p onclick="showPage('table')">🪑 Tables</p>
+  <p onclick="showPage('order')">📦 Orders</p>
+  <p onclick="showPage('sell')">💰 Sell</p>
+</div>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<!-- 🔥 DASHBOARD -->
+<div id="home" class="page">
+  <h3>Today Sell</h3>
+  <div class="card">₹0</div>
+
+  <h3>Total Sell</h3>
+  <div class="card">₹0</div>
+</div>
+
+<!-- 🔥 MENU MANAGEMENT -->
+<div id="menuPage" class="page" style="display:none">
+
+  <h3>Add Item</h3>
+
+  <div class="card">
+    <input id="name" placeholder="Item name">
+    <input id="price" placeholder="Price">
+    <input type="file" id="img">
+
+    <button onclick="addMenu()">➕ Add Item</button>
+  </div>
+
+  <h3>Menu List</h3>
+  <div id="menuList"></div>
+
+</div>
+
+<!-- 🔥 TABLE -->
+<div id="tablePage" class="page" style="display:none">
+
+  <h3>Add Table</h3>
+
+  <div class="card">
+    <input id="tno" placeholder="Table Number">
+    <input id="chairs" placeholder="Chairs">
+
+    <button onclick="addTable()">➕ Add Table</button>
+  </div>
+
+  <div id="tables"></div>
+
+</div>
+
+<!-- 🔥 ORDER -->
+<div id="orderPage" class="page" style="display:none">
+  <h3>Orders</h3>
+  <div id="orders"></div>
+</div>
+
+<!-- 🔥 SELL -->
+<div id="sellPage" class="page" style="display:none">
+  <h3>Sell Report</h3>
+</div>
+
+<script src="app.js"></script>
+<script>
+loadTablesAdmin();
+</script>
+<script>
+loadOrdersAdmin();
+</script>
+<script>
+setInterval(()=>{
+loadOrdersAdmin();
+},5000);
+</script>
+
+</body>
+</html>
