@@ -34,6 +34,16 @@
 <script>
 loadMenu();
 </script>
+<script>
+loadMenu();
+
+setInterval(()=>{
+  if(document.visibilityState === "visible"){
+    loadMenu();
+  }
+},5000);
+if(menu.innerHTML === html) return;
+</script>
 
 </body>
 </html>
