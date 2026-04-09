@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">📦 My Order</div>
+
+<input id="phone" placeholder="Enter Phone Number">
+
+<button onclick="loadOrder()">Check Order</button>
+
+<div id="orderList"></div>
+
+<script src="app.js"></script>
+
+<script>
+loadOrder(); // 🔥 auto load
+setInterval(loadOrder,5000);
+</script>
+
+</body>
+</html>
