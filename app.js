@@ -408,3 +408,4 @@ loadTablesAdmin();
 },5000);
 
 }
+if(menu.innerHTML === html) return;
