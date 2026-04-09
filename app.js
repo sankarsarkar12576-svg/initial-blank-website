@@ -306,7 +306,7 @@ if(String(o.phone) === String(phone)){
 
 html+=`
 <div class="card">
-Table: ${o.table}<br>
+items: ${o.items}<br>
 Total: ₹${o.total}<br>
 Status: <b>${o.status}</b>
 </div>
@@ -339,6 +339,7 @@ data.forEach(o=>{
 html+=`
 <div class="card">
 Table: ${o.table}<br>
+Items: ${o.items}<br>
 Total: ₹${o.total}<br>
 Status: ${o.status}<br>
 
