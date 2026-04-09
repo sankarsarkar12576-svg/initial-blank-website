@@ -288,8 +288,10 @@ window.location.href="order.html";
 
 function loadOrder(){
 
-let phone = document.getElementById("phone").value;
-if(!phone) return;
+let phoneInput = document.getElementById("phone");
+if(!phoneInput) return;
+
+let phone = phoneInput.value.trim();
 
 fetch(API+"?action=getOrders")
 .then(r=>r.json())
@@ -298,15 +300,25 @@ fetch(API+"?action=getOrders")
 let html="";
 
 data.forEach(o=>{
-if(o.phone == phone){
+
+// 🔥 FIX (string compare)
+if(String(o.phone) === String(phone)){
+
 html+=`
 <div class="card">
 Table: ${o.table}<br>
 Total: ₹${o.total}<br>
 Status: <b>${o.status}</b>
-</div>`;
+</div>
+`;
+
 }
+
 });
+
+if(html==""){
+html="<p>No Order Found</p>";
+}
 
 document.getElementById("orderList").innerHTML = html;
 
