@@ -44,9 +44,8 @@ alert("সব fill করো");
 return;
 }
 
-let reader = new FileReader();
-
-reader.onload = function(e){
+// 🔥 AUTO COMPRESS
+compressImage(file,function(imgData){
 
 fetch(API,{
 method:"POST",
@@ -54,7 +53,7 @@ body:JSON.stringify({
 action:"addMenu",
 name:name,
 price:price,
-image:e.target.result
+image:imgData
 })
 })
 .then(()=>{
@@ -62,9 +61,8 @@ alert("✅ Item Added");
 loadMenuAdmin();
 });
 
-};
+});
 
-reader.readAsDataURL(file);
 }
 
 function loadMenuAdmin(){
@@ -409,3 +407,39 @@ loadTablesAdmin();
 
 }
 if(menu.innerHTML === html) return;
+function compressImage(file,callback){
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+let img = new Image();
+img.src = e.target.result;
+
+img.onload = function(){
+
+let canvas = document.createElement("canvas");
+let ctx = canvas.getContext("2d");
+
+// 🔥 resize
+let width = 300;
+let height = img.height * (300/img.width);
+
+canvas.width = width;
+canvas.height = height;
+
+// draw
+ctx.drawImage(img,0,0,width,height);
+
+// 🔥 compress
+let compressed = canvas.toDataURL("image/jpeg",0.6);
+
+callback(compressed);
+
+};
+
+};
+
+reader.readAsDataURL(file);
+
+}
